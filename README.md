@@ -1,1 +1,2 @@
 # awesome_indoor_reconstruction
+This repo is designed for building up an indoor reconstruction pipeline. Currently, this repo is mainly about visual reconstruction methods and requires calibrated images (e.g., with intrinsic and extrinsic.)
