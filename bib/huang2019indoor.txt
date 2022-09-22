@@ -1,0 +1,6 @@
+@article{huang2019indoor,
+  title={Indoor Depth Completion with Boundary Consistency and Self-Attention},
+  author={Huang, Yu-Kai and Wu, Tsung-Han and Liu, Yueh-Cheng and Hsu, Winston H},
+  journal={arXiv preprint arXiv:1908.08344},
+  year={2019}
+}

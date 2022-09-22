@@ -5,3 +5,7 @@ This repo is designed for building up an indoor reconstruction pipeline. Current
 
 ## Dataset
 - [Matterport3D](https://arxiv.org/abs/1709.06158), Chang, Angel and Dai, Angela and Funkhouser, Thomas and Halber, Maciej and Niessner, Matthias and Savva, Manolis and Song, Shuran and Zeng, Andy and Zhang, Yinda, 3DV 2017 | [Website](https://niessner.github.io/Matterport/) | [github](https://github.com/niessner/Matterport) | [bibtex](https://github.com/Haonan-DONG/awesome_indoor_reconstruction/blob/main/bib/matterport3d.txt)
+
+
+## Depth Completion
+- [Indoor Depth Completion with Boundary Consistency and Self-Attention](https://arxiv.org/abs/1908.08344), Huang, Yu-Kai and Wu, Tsung-Han and Liu, Yueh-Cheng and Hsu, Winston H, ICCVW (RLQ) 2019. | [github](https://arxiv.org/abs/1908.08344) | [bibtex](https://github.com/Haonan-DONG/awesome_indoor_reconstruction/blob/main/bib/huang2019indoor.txt)
