@@ -9,3 +9,7 @@ This repo is designed for building up an indoor reconstruction pipeline. Current
 
 ## Depth Completion
 - [Indoor Depth Completion with Boundary Consistency and Self-Attention](https://arxiv.org/abs/1908.08344), Huang, Yu-Kai and Wu, Tsung-Han and Liu, Yueh-Cheng and Hsu, Winston H, ICCVW (RLQ) 2019. | [github](https://arxiv.org/abs/1908.08344) | [bibtex](https://github.com/Haonan-DONG/awesome_indoor_reconstruction/blob/main/bib/huang2019indoor.txt)
+
+
+## Neural Radiance Field for Reconstruction
+- [NeuRIS: Neural Reconstruction of Indoor Scenes Using Normal Priors](https://arxiv.org/abs/2206.13597), Wang, Jiepeng and Wang, Peng and Long, Xiaoxiao and Theobalt, Christian and Komura, Taku and Liu, Lingjie and Wang, Wenping, ECCV 2022 | [Website](https://jiepengwang.github.io/NeuRIS/) | [github](https://github.com/jiepengwang/NeuRIS) | [bibtex](https://github.com/Haonan-DONG/awesome_indoor_reconstruction/blob/main/bib/neuris.txt)
