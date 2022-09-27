@@ -1,0 +1,6 @@
+@inproceedings{schoeps2017cvpr,
+  author = {Thomas Sch\"ops and Johannes L. Sch\"onberger and Silvano Galliani and Torsten Sattler and Konrad Schindler and Marc Pollefeys and Andreas Geiger},
+  title = {A Multi-View Stereo Benchmark with High-Resolution Images and Multi-Camera Videos},
+  booktitle = {Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year = {2017}
+}

@@ -1,0 +1,6 @@
+@inproceedings{mine2021,
+  title={MINE: Towards Continuous Depth MPI with NeRF for Novel View Synthesis},
+  author={Jiaxin Li and Zijian Feng and Qi She and Henghui Ding and Changhu Wang and Gim Hee Lee},
+  year={2021},
+  booktitle={ICCV},
+}
