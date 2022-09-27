@@ -5,7 +5,7 @@ This repo is designed for building up an indoor reconstruction pipeline. Current
 
 ## Dataset
 - [Matterport3D](https://arxiv.org/abs/1709.06158), Chang, Angel and Dai, Angela and Funkhouser, Thomas and Halber, Maciej and Niessner, Matthias and Savva, Manolis and Song, Shuran and Zeng, Andy and Zhang, Yinda, 3DV 2017 | [Website](https://niessner.github.io/Matterport/) | [github](https://github.com/niessner/Matterport) | [bibtex](https://github.com/Haonan-DONG/awesome_indoor_reconstruction/blob/main/bib/matterport3d.txt)
-- [ETH3D](https://www.eth3d.net/data/schoeps2017cvpr.pdf), T. Schöps, J. L. Schönberger, S. Galliani, T. Sattler, K. Schindler, M. Pollefeys, A. Geiger, CVPR 2017 | [Website](https://www.eth3d.net/) | [bibtex](https://github.com/Haonan-DONG/awesome_indoor_reconstruction/blob/main/bib/eth3d.txt) | [github](https://github.com/ETH3D/dataset-pipeline)
+- [ETH3D](https://www.eth3d.net/data/schoeps2017cvpr.pdf), T. Schöps, J. L. Schönberger, S. Galliani, T. Sattler, K. Schindler, M. Pollefeys, A. Geiger, CVPR 2017 | [Website](https://www.eth3d.net/) | [github](https://github.com/ETH3D/dataset-pipeline) | [bibtex](https://github.com/Haonan-DONG/awesome_indoor_reconstruction/blob/main/bib/eth3d.txt)
 
 ## Depth Completion
 - [Indoor Depth Completion with Boundary Consistency and Self-Attention](https://arxiv.org/abs/1908.08344), Huang, Yu-Kai and Wu, Tsung-Han and Liu, Yueh-Cheng and Hsu, Winston H, ICCVW (RLQ) 2019. | [github](https://arxiv.org/abs/1908.08344) | [bibtex](https://github.com/Haonan-DONG/awesome_indoor_reconstruction/blob/main/bib/huang2019indoor.txt)
