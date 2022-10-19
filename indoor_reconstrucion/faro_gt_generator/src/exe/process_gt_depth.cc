@@ -20,8 +20,8 @@ int main(int argc, char **argv)
     std::string ground_truth_depth_path;
     pcl::console::parse_argument(argc, argv, "--ground_truth_depth_path", ground_truth_depth_path);
 
-    cv::Mat gt_depth_map(4032, 6048, CV_32FC1);
-    cv::Mat gt_depth_map_int(4032, 6048, CV_16UC1);
+    cv::Mat gt_depth_map(1440, 1920, CV_32FC1);
+    cv::Mat gt_depth_map_int(1440, 1920, CV_16U);
 
     FILE *ground_truth_depth_file = fopen(ground_truth_depth_path.c_str(), "rb");
     fread(gt_depth_map.data, sizeof(float), gt_depth_map.rows * gt_depth_map.cols, ground_truth_depth_file);
@@ -39,8 +39,14 @@ int main(int argc, char **argv)
         }
     }
 
+    cv::Mat normal_depth;
+    cv::normalize(gt_depth_map_int, normal_depth, 0, 255, cv::NORM_MINMAX);
+    cv::Mat result;
+    normal_depth.convertTo(result, CV_8UC1);
+    cv::imwrite("depth.png", result);
+
     std::cout << "Saving GT depth."
               << std::endl;
-    cv::imwrite("depth.png", gt_depth_map_int);
+    // cv::imwrite("depth.png", gt_depth_map_int);
     return 0;
 }
