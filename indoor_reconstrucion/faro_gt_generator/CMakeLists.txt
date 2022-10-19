@@ -78,9 +78,9 @@ if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE RelWithDebInfo)
 endif()
 
-if(NOT "${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
-    add_definitions("-Wall -O2 -msse2 -msse3")
-endif()
+# if(NOT "${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+#     add_definitions("-Wall -O2 -msse2 -msse3")
+# endif()
 
 include_directories(
     ./src
@@ -260,6 +260,14 @@ add_executable(GroundTruthCreator
   src/exe/ground_truth_creator.cc
 )
 target_link_libraries(GroundTruthCreator
+  ${BASE_LIB_LIBRARIES}
+)
+
+# 
+add_executable(ProcessDepthGroundTruth
+  src/exe/process_gt_depth.cc
+)
+target_link_libraries(ProcessDepthGroundTruth
   ${BASE_LIB_LIBRARIES}
 )
 
