@@ -1,0 +1,2 @@
+colmap feature_extractor --database_path data.db --image_path images/1/ --ImageReader.camera_params 1024,1024,1024 --ImageReader.camera_model SIMPLE_PINHOLE --ImageReader.single_camera 1
+colmap feature_extractor --database_path data.db --image_path images/0/ --ImageReader.camera_params 1566.254760,954.734619,716.97369,0.000001 --ImageReader.single_camera 1
