@@ -359,6 +359,7 @@ int main(int argc, char **argv)
 
     cv::Mat_<bool> validity_map(image_height, image_width);
     cv::Mat_<bool> filled_in_validity_map(image_height, image_width);
+
     for (int y = 0; y < image_height; ++y)
     {
       for (int x = 0; x < image_width; ++x)
