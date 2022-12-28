@@ -1,3 +1,5 @@
 *build_RelWithDebInfo
 *debug
 *build
+*Bin
+*.vscode

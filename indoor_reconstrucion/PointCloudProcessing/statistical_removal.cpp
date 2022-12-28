@@ -3,14 +3,20 @@
 #include <pcl/point_types.h>
 #include <pcl/filters/statistical_outlier_removal.h>
 #include <pcl/io/ply_io.h>
+#include <pcl/console/parse.h>
 
 int main(int argc, char **argv)
 {
+    std::string point_cloud_path;
+    pcl::console::parse_argument(argc, argv, "--input", point_cloud_path);
+    std::string point_cloud_path_out;
+    pcl::console::parse_argument(argc, argv, "--output", point_cloud_path_out);
+
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered(new pcl::PointCloud<pcl::PointXYZ>);
 
     // Fill in the cloud data
-    if (pcl::io::loadPLYFile<pcl::PointXYZ>("../data/local_00000410.ply", *cloud) == -1) //* load the file
+    if (pcl::io::loadPLYFile<pcl::PointXYZ>(point_cloud_path, *cloud) == -1) //* load the file
     {
         PCL_ERROR("Couldn't read file test_pcd.pcd \n");
         system("PAUSE");
@@ -30,12 +36,7 @@ int main(int argc, char **argv)
     std::cerr << "Cloud after filtering: " << std::endl;
     std::cerr << *cloud_filtered << std::endl;
 
-    pcl::PCDWriter writer;
-    writer.write<pcl::PointXYZ>("local_00000410_inlier.pcd", *cloud_filtered, false);
-
-    sor.setNegative(true);
-    sor.filter(*cloud_filtered);
-    writer.write<pcl::PointXYZ>("local_00000410_outlier.pcd", *cloud_filtered, false);
+    pcl::io::savePLYFile(point_cloud_path_out, *cloud_filtered);
 
     return (0);
 }

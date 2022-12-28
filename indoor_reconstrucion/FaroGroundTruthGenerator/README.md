@@ -220,6 +220,9 @@ Most of the steps are identical to the previous example.
   ```
   export POISSON_RECON_PATH=/path/to/PoissonRecon  # Adjust this to your environment.
   ${POISSON_RECON_PATH}/PoissonRecon --in surface_reconstruction/point_cloud_with_normals.ply --out surface_reconstruction/surface.ply --depth 13 --color 16 --density
+
+  # for local point cloud reconstruction.
+  ${POISSON_RECON_PATH}/PoissonRecon --in surface_reconstruction/point_cloud_with_normals.ply --out surface_reconstruction/surface.ply --depth 10 --color 16 --density
   ```
 * Create splats for points which are not well represented in the surface reconstruction:
   ```
