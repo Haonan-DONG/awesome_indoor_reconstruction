@@ -1100,3 +1100,6 @@ fread(gt_depth_map.data, sizeof(float), gt_depth_map.rows * gt_depth_map.cols, g
 fclose(ground_truth_depth_file);
 ```
 The ground truth depth map is set to infinity at pixels for which no depth is available.
+
+## To-do list
+- [ ] Add random centered point cloud for this pipeline.
