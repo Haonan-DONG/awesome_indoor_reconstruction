@@ -21,7 +21,7 @@
 ### 3. dataset.
 - [x] 202 frame abstraction.
 - [x] other's processing.
-- [ ] multi-depth dataset
+- [ ] multi-point cloud dataset
 
 ### Note
 1. clean up the scan point cloud.
