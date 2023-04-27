@@ -27,5 +27,3 @@
 1. clean up the scan point cloud.
 2. move the scan cube map and images into the same directory.
 3. get a finer mesh.
-
-## Using other tof machines.
