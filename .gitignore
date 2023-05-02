@@ -4,4 +4,10 @@
 *Bin
 *.vscode
 *data
-# *ply
+*ply
+*checkpoints
+*results
+*__pycache__
+*tools
+*third_party
+*config

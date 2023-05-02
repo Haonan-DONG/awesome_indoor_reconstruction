@@ -14,6 +14,7 @@ This repo is designed for building up an indoor reconstruction pipeline. Current
 ## Neural Radiance Field for Reconstruction
 - [MINE: Continuous-Depth MPI with Neural Radiance Fields](https://arxiv.org/pdf/2103.14910v3.pdf), Jiaxin Li, Zijian Feng, Qi She, Henghui Ding, Changhu Wang, Gim Hee Lee, ICCV 2021 | [Website](https://vincentfung13.github.io/projects/nemi/) | [github](https://github.com/vincentfung13/MINE) | [bibtex](https://github.com/Haonan-DONG/awesome_indoor_reconstruction/blob/main/bib/mine.txt)
 - [NeuRIS: Neural Reconstruction of Indoor Scenes Using Normal Priors](https://arxiv.org/abs/2206.13597), Wang, Jiepeng and Wang, Peng and Long, Xiaoxiao and Theobalt, Christian and Komura, Taku and Liu, Lingjie and Wang, Wenping, ECCV 2022 | [Website](https://jiepengwang.github.io/NeuRIS/) | [github](https://github.com/jiepengwang/NeuRIS) | [bibtex](https://github.com/Haonan-DONG/awesome_indoor_reconstruction/blob/main/bib/neuris.txt)
+- [NeuralRecon: Real-Time Coherent 3D Reconstruction from Monocular Video](https://arxiv.org/pdf/2104.00681.pdf), Jiaming Sun, Yiming Xie, Linghao Chen, Xiaowei Zhou and Hujun Bao, CVPR 2021 | [Website](https://zju3dv.github.io/neuralrecon) | [bibtex](https://github.com/Haonan-DONG/awesome_indoor_reconstruction/blob/main/bib/neuralrecon.txt)
 
 
 ## Target

@@ -1,0 +1,6 @@
+@inproceedings{sun2021neucon,
+  title={{NeuralRecon}: Real-Time Coherent {3D} Reconstruction from Monocular Video},
+  author={Sun, Jiaming and Xie, Yiming and Chen, Linghao and Zhou, Xiaowei and Bao, Hujun},
+  journal={CVPR},
+  year={2021}
+}
