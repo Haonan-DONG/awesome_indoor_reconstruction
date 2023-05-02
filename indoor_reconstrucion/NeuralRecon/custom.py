@@ -39,7 +39,7 @@ else:
 
 logger.info("Running NeuralRecon...")
 transform = [
-    transforms.ResizeImage((640, 480)),
+    transforms.ResizeImage((640, 480), False),
     transforms.ToTensor(),
     transforms.RandomTransformSpace(
         cfg.MODEL.N_VOX,

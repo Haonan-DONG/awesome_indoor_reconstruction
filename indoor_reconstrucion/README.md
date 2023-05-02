@@ -21,7 +21,7 @@
 1. Neural Recon with our custom data.
 - [X] Key frame extraction.
 - [X] Align to the Scannet.
-- [X] Intrinsic checking and the resolution.
 - [X] Pose checking.
-- [ ] Scene generalization with scannet.
+- [X] Intrinsic checking and the resolution.
+- [X] Scene generalization with scannet.
 - [ ] Pose Expanding for mathematics.
