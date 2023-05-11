@@ -16,4 +16,4 @@ Here is the reconstructed mesh by the same data by **NeuralRecon(CVPR2021)**
 - [X] Intrinsic checking and the resolution.
 - [X] Scene generalization with scannet.
 - [ ] Pose Expanding for mathematics.
-- [ ] Upload the testing data.
+- [ ] Upload the testing data (A indoor office).
