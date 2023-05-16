@@ -20,7 +20,7 @@ See the [README.md](DataGenerator/PointCloud2Depth/README.md)
 
 ## Mesh Reconstruction
 ### Poisson Reconstruction
-- [x] [Poisson Reconstruction](https://www.cs.jhu.edu/~misha/Code/PoissonRecon/Version13.80/)
+- [Poisson Reconstruction](https://www.cs.jhu.edu/~misha/Code/PoissonRecon/Version13.80/)
 ```shell
 # for the latest version, please visit https://www.cs.jhu.edu/~misha/Code/PoissonRecon/.
 cd PoissonReconstruction
@@ -35,6 +35,11 @@ We provide a demo data in [Baidu Disk](https://pan.baidu.com/s/1GM5fh7TqtKoRDLyG
  <div align=center> <img src="doc/poisson_doc.png"
   width = 100%/> </div>
 
+
+
+### RGB-D Surface Reconstruction by TSDF-Fusion
+- [TSDF-Fusion](https://github.com/andyzeng/tsdf-fusion)
+- [X] Add CMakeLists.txt for compiling.
 
 
 ## Learning-based Methods
