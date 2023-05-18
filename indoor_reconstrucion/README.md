@@ -32,19 +32,24 @@ make -j
 bash scripts/point2mesh.sh path_to_pcd
 ```
 
-We provide a demo data in [Baidu Disk](https://pan.baidu.com/s/1GM5fh7TqtKoRDLyGq-Uq6w) (Password: 60av) and the qualitative result is shown in the following figure.
+We provide a demo data in [Baidu Disk](https://pan.baidu.com/s/1GM5fh7TqtKoRDLyGq-Uq6w) (Password: 60av) and the qualitative result is shown in the following figure. Note that the mesh is trimmed manually.
  <div align=center> <img src="doc/poisson_doc.png"
   width = 100%/> </div>
 
 
 
 ### RGB-D Surface Reconstruction by TSDF-Fusion
-1. [TSDF-Fusion](https://github.com/andyzeng/tsdf-fusion)
+1. [TSDF-Fusion](https://github.com/andyzeng/tsdf-fusion-python)
 - [X] Add CMakeLists.txt for compiling.
-- [ ] Visualize the integrating procedure by PyRender.
+- [X] Visualize the integrating procedure by Trimesh.
+- [X] Generate the mesh after each integration and visualize it. Test the speed.
 - [ ] Transfer into rgb-d camera, like rgb-d camera or iphone.
+- [ ] AR Application.
+The qualitative result is shown in the following figure by the demo data. The speed for generating mesh is low at present.
+ <div align=center> <img src="doc/tsdf.gif"
+  width = 35%/> </div>
 
-2. [Open3D]
+2. [Open3D]()
 
 
 ## Learning-based Methods

@@ -11,10 +11,14 @@ import cv2
 
 # print arguments
 def print_args(args):
-    logger.info("################################  args  ################################")
+    logger.info(
+        "################################  args  ################################"
+    )
     for k, v in args.__dict__.items():
         logger.info("{0: <10}\t{1: <30}\t{2: <20}".format(k, str(v), str(type(v))))
-    logger.info("########################################################################")
+    logger.info(
+        "########################################################################"
+    )
 
 
 # torch.no_grad warpper for functions
@@ -52,7 +56,9 @@ def tensor2float(vars):
         else:
             return [v.data.item() for v in vars]
     else:
-        raise NotImplementedError("invalid input type {} for tensor2float".format(type(vars)))
+        raise NotImplementedError(
+            "invalid input type {} for tensor2float".format(type(vars))
+        )
 
 
 @make_recursive_func
@@ -62,7 +68,9 @@ def tensor2numpy(vars):
     elif isinstance(vars, torch.Tensor):
         return vars.detach().cpu().numpy().copy()
     else:
-        raise NotImplementedError("invalid input type {} for tensor2numpy".format(type(vars)))
+        raise NotImplementedError(
+            "invalid input type {} for tensor2numpy".format(type(vars))
+        )
 
 
 @make_recursive_func
@@ -72,18 +80,20 @@ def tocuda(vars):
     elif isinstance(vars, str):
         return vars
     else:
-        raise NotImplementedError("invalid input type {} for tensor2numpy".format(type(vars)))
+        raise NotImplementedError(
+            "invalid input type {} for tensor2numpy".format(type(vars))
+        )
 
 
 def save_scalars(logger, mode, scalar_dict, global_step):
     scalar_dict = tensor2float(scalar_dict)
     for key, value in scalar_dict.items():
         if not isinstance(value, (list, tuple)):
-            name = '{}/{}'.format(mode, key)
+            name = "{}/{}".format(mode, key)
             logger.add_scalar(name, value, global_step)
         else:
             for idx in range(len(value)):
-                name = '{}/{}_{}'.format(mode, key, idx)
+                name = "{}/{}_{}".format(mode, key, idx)
                 logger.add_scalar(name, value[idx], global_step)
 
 
@@ -92,7 +102,9 @@ def save_images(logger, mode, images_dict, global_step):
 
     def preprocess(name, img):
         if not (len(img.shape) == 3 or len(img.shape) == 4):
-            raise NotImplementedError("invalid img shape {}:{} in save_images".format(name, img.shape))
+            raise NotImplementedError(
+                "invalid img shape {}:{} in save_images".format(name, img.shape)
+            )
         if len(img.shape) == 3:
             img = img[:, np.newaxis, :, :]
         img = torch.from_numpy(img[:1])
@@ -100,11 +112,11 @@ def save_images(logger, mode, images_dict, global_step):
 
     for key, value in images_dict.items():
         if not isinstance(value, (list, tuple)):
-            name = '{}/{}'.format(mode, key)
+            name = "{}/{}".format(mode, key)
             logger.add_image(name, preprocess(name, value), global_step)
         else:
             for idx in range(len(value)):
-                name = '{}/{}_{}'.format(mode, key, idx)
+                name = "{}/{}_{}".format(mode, key, idx)
                 logger.add_image(name, preprocess(name, value[idx]), global_step)
 
 
@@ -130,8 +142,8 @@ class DictAverageMeter(object):
         return {k: v / self.count for k, v in self.data.items()}
 
 
-def coordinates(voxel_dim, device=torch.device('cuda')):
-    """ 3d meshgrid of given size.
+def coordinates(voxel_dim, device=torch.device("cuda")):
+    """3d meshgrid of given size.
 
     Args:
         voxel_dim: tuple of 3 ints (nx,ny,nz) specifying the size of the volume
@@ -156,7 +168,9 @@ def apply_log_transform(tsdf):
 
 
 def sparse_to_dense_torch_batch(locs, values, dim, default_val):
-    dense = torch.full([dim[0], dim[1], dim[2], dim[3]], float(default_val), device=locs.device)
+    dense = torch.full(
+        [dim[0], dim[1], dim[2], dim[3]], float(default_val), device=locs.device
+    )
     dense[locs[:, 0], locs[:, 1], locs[:, 2], locs[:, 3]] = values
     return dense
 
@@ -185,8 +199,8 @@ def sparse_to_dense_np(locs, values, dim, default_val):
 class SaveScene(object):
     def __init__(self, cfg):
         self.cfg = cfg
-        log_dir = cfg.LOGDIR.split('/')[-1]
-        self.log_dir = os.path.join('results', 'scene_' + cfg.DATASET + '_' + log_dir)
+        log_dir = cfg.LOGDIR.split("/")[-1]
+        self.log_dir = os.path.join("results", "scene_" + cfg.DATASET + "_" + log_dir)
         self.scene_name = None
         self.global_origin = None
         self.tsdf_volume = []  # not used during inference.
@@ -219,18 +233,20 @@ class SaveScene(object):
     @staticmethod
     def tsdf2mesh(voxel_size, origin, tsdf_vol):
         verts, faces, norms, vals = measure.marching_cubes(tsdf_vol, level=0)
-        verts = verts * voxel_size + origin  # voxel grid coordinates to world coordinates
+        verts = (
+            verts * voxel_size + origin
+        )  # voxel grid coordinates to world coordinates
         mesh = trimesh.Trimesh(vertices=verts, faces=faces, vertex_normals=norms)
         return mesh
 
     def vis_incremental(self, epoch_idx, batch_idx, imgs, outputs):
-        tsdf_volume = outputs['scene_tsdf'][batch_idx].data.cpu().numpy()
-        origin = outputs['origin'][batch_idx].data.cpu().numpy()
-        if self.cfg.DATASET == 'demo':
+        tsdf_volume = outputs["scene_tsdf"][batch_idx].data.cpu().numpy()
+        origin = outputs["origin"][batch_idx].data.cpu().numpy()
+        if self.cfg.DATASET == "demo":
             origin[2] -= 1.5
 
         if (tsdf_volume == 1).all():
-            logger.warning('No valid partial data for scene {}'.format(self.scene_name))
+            logger.warning("No valid partial data for scene {}".format(self.scene_name))
         else:
             # Marching cubes
             mesh = self.tsdf2mesh(self.cfg.MODEL.VOXEL_SIZE, origin, tsdf_volume)
@@ -243,59 +259,63 @@ class SaveScene(object):
                 img = cv2.resize(img, (img.shape[1] // 2, img.shape[0] // 2))
                 key_frames.append(img)
             key_frames = np.concatenate(key_frames, axis=0)
-            cv2.imshow('Selected Keyframes', key_frames / 255)
+            cv2.imshow("Selected Keyframes", key_frames / 255)
             cv2.waitKey(1)
             # vis mesh
             self.vis.vis_mesh(mesh)
 
     def save_incremental(self, epoch_idx, batch_idx, imgs, outputs):
-        save_path = os.path.join('incremental_' + self.log_dir + '_' + str(epoch_idx), self.scene_name)
+        save_path = os.path.join(
+            "incremental_" + self.log_dir + "_" + str(epoch_idx), self.scene_name
+        )
         if not os.path.exists(save_path):
             os.makedirs(save_path)
 
-        tsdf_volume = outputs['scene_tsdf'][batch_idx].data.cpu().numpy()
-        origin = outputs['origin'][batch_idx].data.cpu().numpy()
-        if self.cfg.DATASET == 'demo':
+        tsdf_volume = outputs["scene_tsdf"][batch_idx].data.cpu().numpy()
+        origin = outputs["origin"][batch_idx].data.cpu().numpy()
+        if self.cfg.DATASET == "demo":
             origin[2] -= 1.5
 
         if (tsdf_volume == 1).all():
-            logger.warning('No valid partial data for scene {}'.format(self.scene_name))
+            logger.warning("No valid partial data for scene {}".format(self.scene_name))
         else:
             # Marching cubes
             mesh = self.tsdf2mesh(self.cfg.MODEL.VOXEL_SIZE, origin, tsdf_volume)
             # save
-            mesh.export(os.path.join(save_path, 'mesh_{}.ply'.format(self.keyframe_id)))
+            mesh.export(os.path.join(save_path, "mesh_{}.ply".format(self.keyframe_id)))
 
     def save_scene_eval(self, epoch, outputs, batch_idx=0):
-        tsdf_volume = outputs['scene_tsdf'][batch_idx].data.cpu().numpy()
-        origin = outputs['origin'][batch_idx].data.cpu().numpy()
+        tsdf_volume = outputs["scene_tsdf"][batch_idx].data.cpu().numpy()
+        origin = outputs["origin"][batch_idx].data.cpu().numpy()
 
         if (tsdf_volume == 1).all():
-            logger.warning('No valid data for scene {}'.format(self.scene_name))
+            logger.warning("No valid data for scene {}".format(self.scene_name))
         else:
             # Marching cubes
             mesh = self.tsdf2mesh(self.cfg.MODEL.VOXEL_SIZE, origin, tsdf_volume)
             # save tsdf volume for atlas evaluation
-            data = {'origin': origin,
-                    'voxel_size': self.cfg.MODEL.VOXEL_SIZE,
-                    'tsdf': tsdf_volume}
-            save_path = '{}_fusion_eval_{}'.format(self.log_dir, epoch)
+            data = {
+                "origin": origin,
+                "voxel_size": self.cfg.MODEL.VOXEL_SIZE,
+                "tsdf": tsdf_volume,
+            }
+            save_path = "{}_fusion_eval_{}".format(self.log_dir, epoch)
             if not os.path.exists(save_path):
                 os.makedirs(save_path)
             np.savez_compressed(
-                os.path.join(save_path, '{}.npz'.format(self.scene_name)),
-                **data)
-            mesh.export(os.path.join(save_path, '{}.ply'.format(self.scene_name)))
+                os.path.join(save_path, "{}.npz".format(self.scene_name)), **data
+            )
+            mesh.export(os.path.join(save_path, "{}.ply".format(self.scene_name)))
 
     def __call__(self, outputs, inputs, epoch_idx):
         # no scene saved, skip
         if "scene_name" not in outputs.keys():
             return
 
-        batch_size = len(outputs['scene_name'])
+        batch_size = len(outputs["scene_name"])
         for i in range(batch_size):
-            scene = outputs['scene_name'][i]
-            self.scene_name = scene.replace('/', '-')
+            scene = outputs["scene_name"][i]
+            self.scene_name = scene.replace("/", "-")
 
             if self.cfg.SAVE_SCENE_MESH:
                 self.save_scene_eval(epoch_idx, outputs, i)
